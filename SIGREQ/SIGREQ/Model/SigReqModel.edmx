@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="sigreqModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="STACKHOLDER">
+          <Key>
+            <PropertyRef Name="STACKHOLDERID" />
+          </Key>
+          <Property Name="STACKHOLDERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOME" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="TIPOSTACKHOLDERID" Type="int" Nullable="false" />
+          <Property Name="TELEFONE" Type="varchar" MaxLength="12" />
+          <Property Name="DATAREGISTRO" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="TIPOSTACKHOLDERID" />
+          </Key>
+          <Property Name="TIPOSTACKHOLDERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOME" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPOSTACKHOLDER">
+          <Key>
+            <PropertyRef Name="TIPOSTACKHOLDERID" />
+          </Key>
+          <Property Name="TIPOSTACKHOLDERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOME" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPOSTACKHOLDERID">
+          <Key>
+            <PropertyRef Name="TIPOSTACKHOLDERID" />
+          </Key>
+          <Property Name="TIPOSTACKHOLDERID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOME" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_STACKHOLDER_TIPOSTACKHOLDER">
+          <End Role="TIPOSTACKHOLDER" Type="Self.TIPOSTACKHOLDER" Multiplicity="1" />
+          <End Role="STACKHOLDER" Type="Self.STACKHOLDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOSTACKHOLDER">
+              <PropertyRef Name="TIPOSTACKHOLDERID" />
+            </Principal>
+            <Dependent Role="STACKHOLDER">
+              <PropertyRef Name="TIPOSTACKHOLDERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sigreqModelStoreContainer">
+          <EntitySet Name="STACKHOLDER" EntityType="Self.STACKHOLDER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table" EntityType="Self.Table" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPOSTACKHOLDER" EntityType="Self.TIPOSTACKHOLDER" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TIPOSTACKHOLDERID" EntityType="Self.TIPOSTACKHOLDERID" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_STACKHOLDER_TIPOSTACKHOLDER" Association="Self.FK_STACKHOLDER_TIPOSTACKHOLDER">
+            <End Role="TIPOSTACKHOLDER" EntitySet="TIPOSTACKHOLDER" />
+            <End Role="STACKHOLDER" EntitySet="STACKHOLDER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="sigreqModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="STACKHOLDER">
+          <Key>
+            <PropertyRef Name="STACKHOLDERID" />
+          </Key>
+          <Property Name="STACKHOLDERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TIPOSTACKHOLDERID" Type="Int32" Nullable="false" />
+          <Property Name="TELEFONE" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="DATAREGISTRO" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="TIPOSTACKHOLDER" Relationship="Self.FK_STACKHOLDER_TIPOSTACKHOLDER" FromRole="STACKHOLDER" ToRole="TIPOSTACKHOLDER" />
+        </EntityType>
+        <EntityType Name="Table">
+          <Key>
+            <PropertyRef Name="TIPOSTACKHOLDERID" />
+          </Key>
+          <Property Name="TIPOSTACKHOLDERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TIPOSTACKHOLDER">
+          <Key>
+            <PropertyRef Name="TIPOSTACKHOLDERID" />
+          </Key>
+          <Property Name="TIPOSTACKHOLDERID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="STACKHOLDER" Relationship="Self.FK_STACKHOLDER_TIPOSTACKHOLDER" FromRole="TIPOSTACKHOLDER" ToRole="STACKHOLDER" />
+        </EntityType>
+        <EntityType Name="TIPOSTACKHOLDERID">
+          <Key>
+            <PropertyRef Name="TIPOSTACKHOLDERID1" />
+          </Key>
+          <Property Name="TIPOSTACKHOLDERID1" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_STACKHOLDER_TIPOSTACKHOLDER">
+          <End Role="TIPOSTACKHOLDER" Type="Self.TIPOSTACKHOLDER" Multiplicity="1" />
+          <End Role="STACKHOLDER" Type="Self.STACKHOLDER" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TIPOSTACKHOLDER">
+              <PropertyRef Name="TIPOSTACKHOLDERID" />
+            </Principal>
+            <Dependent Role="STACKHOLDER">
+              <PropertyRef Name="TIPOSTACKHOLDERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="sigreqEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="STACKHOLDER" EntityType="Self.STACKHOLDER" />
+          <EntitySet Name="Table" EntityType="Self.Table" />
+          <EntitySet Name="TIPOSTACKHOLDER" EntityType="Self.TIPOSTACKHOLDER" />
+          <EntitySet Name="TIPOSTACKHOLDERID" EntityType="Self.TIPOSTACKHOLDERID" />
+          <AssociationSet Name="FK_STACKHOLDER_TIPOSTACKHOLDER" Association="Self.FK_STACKHOLDER_TIPOSTACKHOLDER">
+            <End Role="TIPOSTACKHOLDER" EntitySet="TIPOSTACKHOLDER" />
+            <End Role="STACKHOLDER" EntitySet="STACKHOLDER" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="sigreqModelStoreContainer" CdmEntityContainer="sigreqEntities">
+          <EntitySetMapping Name="STACKHOLDER">
+            <EntityTypeMapping TypeName="sigreqModel.STACKHOLDER">
+              <MappingFragment StoreEntitySet="STACKHOLDER">
+                <ScalarProperty Name="STACKHOLDERID" ColumnName="STACKHOLDERID" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+                <ScalarProperty Name="TIPOSTACKHOLDERID" ColumnName="TIPOSTACKHOLDERID" />
+                <ScalarProperty Name="TELEFONE" ColumnName="TELEFONE" />
+                <ScalarProperty Name="DATAREGISTRO" ColumnName="DATAREGISTRO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table">
+            <EntityTypeMapping TypeName="sigreqModel.Table">
+              <MappingFragment StoreEntitySet="Table">
+                <ScalarProperty Name="TIPOSTACKHOLDERID" ColumnName="TIPOSTACKHOLDERID" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOSTACKHOLDER">
+            <EntityTypeMapping TypeName="sigreqModel.TIPOSTACKHOLDER">
+              <MappingFragment StoreEntitySet="TIPOSTACKHOLDER">
+                <ScalarProperty Name="TIPOSTACKHOLDERID" ColumnName="TIPOSTACKHOLDERID" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TIPOSTACKHOLDERID">
+            <EntityTypeMapping TypeName="sigreqModel.TIPOSTACKHOLDERID">
+              <MappingFragment StoreEntitySet="TIPOSTACKHOLDERID">
+                <ScalarProperty Name="TIPOSTACKHOLDERID1" ColumnName="TIPOSTACKHOLDERID" />
+                <ScalarProperty Name="NOME" ColumnName="NOME" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
